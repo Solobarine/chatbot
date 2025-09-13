@@ -1,10 +1,14 @@
-const express = require("express");
+import express from "express";
+import conversationRoutes from "./src/routes/controller.route.js";
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
+
+// -------- ROUTES
+app.use("/api/v1/conversations", conversationRoutes);
 
 app.listen(port, () => {
   console.log(
