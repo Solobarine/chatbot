@@ -1,6 +1,7 @@
 import express from "express";
 import swaggerUiExpress from "swagger-ui-express";
 import conversationRoutes from "./src/routes/conversation.route.js";
+import messageRoutes from "./src/routes/message.route.js";
 import spec from "./src/swagger/index.js";
 
 const app = express();
@@ -14,6 +15,7 @@ app.use("/api-docs/v1", swaggerUiExpress.serve, swaggerUiExpress.setup(spec));
 
 // -------- ROUTES
 app.use("/api/v1/conversations", conversationRoutes);
+app.use("/api/v1/messages", messageRoutes);
 
 // -------- ROUTE NOT FOUND => {
 app.use((req, res, _next) => {
