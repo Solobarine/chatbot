@@ -85,4 +85,64 @@ router.post("/", conversationController.createConversation);
  */
 router.get("/", conversationController.getConversations);
 
+/**
+ * @swagger
+ * /conversations/{conversationId}:
+ *   get:
+ *     summary: Get a conversation by ID
+ *     tags: [Conversations]
+ *     parameters:
+ *       - in: path
+ *         name: conversationId
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: The ID of the conversation
+ *     responses:
+ *       200:
+ *         description: Conversation retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   format: uuid
+ *                 title:
+ *                   type: string
+ *                   nullable: true
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *       404:
+ *         description: Conversation not found
+ *       500:
+ *         description: Server error while retrieving conversation
+ */
+router.get("/:conversationId", conversationController.getConversation);
+
+/**
+ * @swagger
+ * /conversations/{conversationId}:
+ *   delete:
+ *     summary: Delete a conversation by ID
+ *     tags: [Conversations]
+ *     parameters:
+ *       - in: path
+ *         name: conversationId
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: The ID of the conversation
+ *     responses:
+ *       204:
+ *         description: Conversation deleted successfully
+ *       500:
+ *         description: Server error while deleting conversation
+ */
+router.delete("/:conversationId", conversationController.deleteConversation);
+
 export default router;
