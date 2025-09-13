@@ -1,10 +1,32 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "A minimal chatbot application backend built with **Express** and **Prisma**.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "@prisma/client": "^6.16.1",
     "@prisma/extension-accelerate": "^2.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "prisma": "^6.16.1"
+    "prisma": "^6.16.1",
+    "zod": "^4.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Solobarine/chatbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Solobarine/chatbot/issues"
+  },
+  "homepage": "https://github.com/Solobarine/chatbot#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
