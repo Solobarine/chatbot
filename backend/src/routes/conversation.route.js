@@ -14,18 +14,10 @@ const router = Router();
  * @swagger
  * components:
  *   schemas:
- *     Message:
+ *     Conversation:
  *       type: object
  *       properties:
  *         id:
- *           type: string
- *           format: uuid
- *         text:
- *           type: string
- *         sender:
- *           type: string
- *           enum: [USER, BOT]
- *         conversationId:
  *           type: string
  *           format: uuid
  *         createdAt:
