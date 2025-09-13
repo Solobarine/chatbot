@@ -15,6 +15,14 @@ app.use("/api-docs/v1", swaggerUiExpress.serve, swaggerUiExpress.setup(spec));
 // -------- ROUTES
 app.use("/api/v1/conversations", conversationRoutes);
 
+// -------- ROUTE NOT FOUND => {
+app.use((req, res, _next) => {
+  res.status(404).json({
+    error: "Route not found",
+    path: req.originalUrl,
+  });
+});
+
 app.listen(port, () => {
   console.log(
     `🚀 \x1b[32mServer is up and running!\x1b[0m 🌍 Listening on port: \x1b[36m${port}\x1b[0m`,
