@@ -7,3 +7,15 @@ export const createConversation = async () => {
 export const getConversations = async () => {
   return await prisma.conversation.findMany();
 };
+
+export const getConversation = async (conversationId) => {
+  return await prisma.conversation.findUnique({
+    where: { conversationId },
+  });
+};
+
+export const deleteConversation = async (conversationId) => {
+  return await prisma.conversation.delete({
+    where: { conversationId },
+  });
+};
