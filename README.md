@@ -43,7 +43,7 @@ DATABASE_URL="your_database_url_here"
 #### Database Setup
 From the backend folder:
 ```bash
-npx prisma migrate dev --name init
+npx prisma generate
 ```
 
 #### Running the Project
