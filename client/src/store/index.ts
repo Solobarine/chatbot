@@ -1,4 +1,4 @@
-import { Conversation } from "@/types";
+import { Conversation, Message } from "@/types";
 import { create } from "zustand";
 
 export interface StoreState {
@@ -10,6 +10,10 @@ export interface StoreState {
   populateConversations: (conversations: Conversation[]) => void;
   appendConversation: (conversation: Conversation) => void;
   deleteConversation: (id: string) => void;
+  messages: Message[];
+  appendMessage: (message: Message) => void;
+  populateMessages: (messages: Message[]) => void;
+  deleteMessage: (id: string) => void;
 }
 
 export const useStore = create<StoreState>()((set) => ({
@@ -37,5 +41,21 @@ export const useStore = create<StoreState>()((set) => ({
     set((state) => ({
       ...state,
       selectedConversationId: id,
+    })),
+  messages: [],
+  appendMessage: (message) =>
+    set((state) => ({
+      ...state,
+      messages: [...state.messages, message],
+    })),
+  populateMessages: (messages) =>
+    set((state) => ({
+      ...state,
+      messages: messages,
+    })),
+  deleteMessage: (id) =>
+    set((state) => ({
+      ...state,
+      messages: state.messages.filter((message) => message.id !== id),
     })),
 }));
