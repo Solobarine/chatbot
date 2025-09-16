@@ -71,19 +71,19 @@ const Conversation = () => {
       const chatbotMessageId = generateId();
       const chatbotThinkingMessage = {
         id: chatbotMessageId,
-        conversationId: id,
+        conversation_id: id,
         sender: "BOT",
         text: "...",
-        createdAt: new Date().toString(),
+        created_at: new Date().toString(),
       } as Message;
 
       const userMessageId = generateId();
       const userMessage = {
         id: userMessageId,
-        conversationId: id,
+        conversation_id: id,
         sender: "USER",
         text,
-        createdAt: new Date().toString(),
+        created_at: new Date().toString(),
       } as Message;
 
       store.appendMessage(userMessage);
@@ -91,7 +91,7 @@ const Conversation = () => {
 
       setSubmitting(true);
       setError("");
-      const body = { conversationId: id, text, sender: "USER" };
+      const body = { conversation_id: id, text, sender: "USER" };
       const res = await fetch("/api/messages", {
         method: "POST",
         body: JSON.stringify(body),
@@ -221,7 +221,7 @@ const Conversation = () => {
           }}
         >
           {store.messages.map((message, index) => {
-            const dateObj = new Date(message.createdAt);
+            const dateObj = new Date(message.created_at);
 
             // Format Date
             const currentDay = dateObj.toLocaleDateString("en-US", {
@@ -238,7 +238,7 @@ const Conversation = () => {
             const prevDay =
               index > 0
                 ? new Date(
-                    store.messages[index - 1].createdAt,
+                    store.messages[index - 1].created_at,
                   ).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",

@@ -1,12 +1,13 @@
 # Chatbot
 
-A minimal chatbot application built with **Express**, **Next.js**, **MUI**, **TailwindCSS**, and **Prisma**.
+A minimal chatbot application built with **Next.js**, **Material UI**, **TailwindCSS**, and **Ruby on Rails**.
 
 ## Tech Stack
 
-* **Backend:** Express, Prisma (PostgreSQL)
+* **API:** Ruby on Rails
 * **Frontend:** Next.js, MUI, TailwindCSS, Lucide
-* **Database:** PostgreSQL (via Prisma ORM)
+* **Database:** Neon DB (PostgreSQL)
+* **Documentation:** Swagger, Rswag
 
 ## Screenshots
 
@@ -16,26 +17,28 @@ A minimal chatbot application built with **Express**, **Next.js**, **MUI**, **Ta
 ## Features
 
 * Minimal chatbot interface
-* REST API powered by Express
+* REST API powered by Ruby on Rails
 * UI built with MUI components and Lucide icons
-* Database persistence with Prisma ORM
+* Database persistence with Neon DB
 
 ## Getting Started
 
 ### Prerequisites
 
 * Node.js (>= 20)
-* PostgreSQL database
+* Ruby (>= 3.2.2)
+* Postgres
+* Docker (Required for installation via Docker)
 
 ### Installation via Docker
 
-Run the chatbot client (Next.js) and backend (Express) using Docker. Database is provided for this installation method.
+Run the chatbot client (Next.js) and api (Ruby on Rails) using Docker. Database is provided for this installation method.
 
 #### 1. Pull the Docker images
 
 ```bash
 docker pull solobarine/chatbot-client:latest
-docker pull solobarine/chatbot-backend:latest
+docker pull solobarine/chatbot-api:latest
 ```
 
 #### 2. Run the containers
@@ -44,14 +47,14 @@ docker pull solobarine/chatbot-backend:latest
 # Run the client on port 3000
 docker run -d -p 3000:3000 solobarine/chatbot-client:latest
 
-# Run the backend on port 5000
-docker run -d -p 5000:5000 solobarine/chatbot-backend:latest
+# Run the api on port 5000
+docker run -d -p 5000:5000 solobarine/chatbot-api:latest
 ```
 
 #### 3. Access the services
 
 * Client (Next.js): [http://localhost:3000](http://localhost:3000)
-* Backend (Express): [http://localhost:5000](http://localhost:5000)
+* API (Ruby on Rails): [http://localhost:5000](http://localhost:5000)
 
 ---
 
@@ -69,40 +72,34 @@ cd chatbot
 #### 2. Install dependencies
 
 ```bash
-npm install
+bundle install
 ```
 
 #### 3. Configure environment variables
 
-Create a `.env` file inside the **backend** folder and add your database URL:
+Create a `.env` file inside the **api** folder and add your database URL:
 
 ```env
-DATABASE_URL="your_prisma_database_url_here"
-# Visit https://www.prisma.io/ and get a Prisma Database
+DATABASE_URL="your_neon_database_url_here"
+# Visit https://neon.com/ and get a Postgres Database or install Postgres on your Machine
 ```
 
 #### 4. Database setup
 
-Generate the Prisma client:
+Push Migration to Database:
 
 ```bash
-cd backend
-npx prisma generate
-```
-
-Push the Prisma schema to your database:
-
-```bash
-npx prisma db push
+cd api
+rails db:migrate
 ```
 
 #### 5. Run the project
 
-* **Backend (Express + Prisma):**
+* **API (Ruby on Rails + Neon DB):**
 
 ```bash
-cd backend
-npm run dev
+cd api
+rails s --port 5000
 ```
 
 * **Client (Next.js + MUI + Tailwind):**
