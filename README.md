@@ -77,7 +77,8 @@ npm install
 Create a `.env` file inside the **backend** folder and add your database URL:
 
 ```env
-DATABASE_URL="your_database_url_here"
+DATABASE_URL="your_prisma_database_url_here"
+# Visit https://www.prisma.io/ and get a Prisma Database
 ```
 
 #### 4. Database setup
