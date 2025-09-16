@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/latest/api-docs'
+  mount Rswag::Api::Engine => '/latest/api-docs'
   namespace :api do
     namespace :v1 do
+      mount Rswag::Api::Engine => "/api-docs"
+      mount Rswag::Ui::Engine => "/api-docs"
+
       resources :conversations, only: [:index, :show, :create, :destroy]
       resources :messages, only: [:show, :create]
     end
