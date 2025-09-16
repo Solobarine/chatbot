@@ -7,16 +7,12 @@ import {
   Box,
   Button,
   CircularProgress,
-  IconButton,
   List,
-  ListItem,
-  ListItemButton,
   Typography,
 } from "@mui/material";
-import { PlusCircle, Trash2 } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import Item from "@/components/conversations/item";
 import { useStore } from "@/store";
-import { Conversation } from "@/types";
 
 const ConversationList = () => {
   const router = useRouter();
@@ -28,8 +24,6 @@ const ConversationList = () => {
   const [creating, setCreating] = useState(false);
   const [createError, setCreateError] = useState("");
 
-  console.log(store.conversations);
-
   useEffect(() => {
     const fetchConversation = async () => {
       try {
@@ -40,7 +34,6 @@ const ConversationList = () => {
           throw new Error("Something went wrong");
         }
         const data = await res.json();
-        console.log(data);
         if (data.conversations) {
           store.populateConversations(data.conversations);
         } else {
@@ -90,12 +83,8 @@ const ConversationList = () => {
     }
   };
 
-  const handleClick = (id) => {
+  const handleClick = (id: string) => {
     router.push(`/conversations/${id}`);
-  };
-
-  const deleteConversation = (id: number) => {
-    console.log(id);
   };
 
   return (
@@ -136,7 +125,7 @@ const ConversationList = () => {
             placeContent: "center",
           }}
         >
-          <Typography>{error}</Typography>
+          <Alert severity="error">{error}</Alert>
         </Box>
       )}
       {store.conversations.length > 0 && (
@@ -147,7 +136,7 @@ const ConversationList = () => {
               conversation={convo}
               index={index}
               handleClick={handleClick}
-              handleDelete={deleteConversation}
+              handleDelete={store.selectConversationId}
             />
           ))}
         </List>
@@ -160,7 +149,7 @@ const ConversationList = () => {
             placeContent: "center",
           }}
         >
-          <Typography>Empty. Create a Conversation</Typography>
+          <Alert severity="info">Empty. Create a Conversation</Alert>
         </Box>
       )}
     </Box>
