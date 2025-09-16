@@ -29,7 +29,7 @@ A minimal chatbot application built with **Express**, **Next.js**, **MUI**, **Ta
 
 ### Installation via Docker
 
-Run the chatbot client (Next.js) and backend (Express) using Docker.
+Run the chatbot client (Next.js) and backend (Express) using Docker. Database is provided for this installation method.
 
 #### 1. Pull the Docker images
 
