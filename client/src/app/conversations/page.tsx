@@ -19,7 +19,14 @@ const Conversations = () => {
       }}
     >
       <IconButton
-        sx={{ position: "absolute", right: 5 }}
+        sx={{
+          display: {
+            xs: "block",
+            sm: "none",
+          },
+          position: "absolute",
+          right: 5,
+        }}
         onClick={store.toggleListOpen}
       >
         <Menu />

@@ -1,13 +1,15 @@
 export interface Conversation {
   id: string;
-  createdAt: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Message {
   id: string;
   text: string;
   sender: "USER" | "BOT";
-  conversationId: string;
+  conversation_id: string;
   conversation?: Conversation;
-  createdAt: string;
+  created_at: string;
+  updated_at: string;
 }
