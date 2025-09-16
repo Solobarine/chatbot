@@ -1,8 +1,10 @@
+import { NextRequest } from "next/server";
+
 export async function GET(
-  _req: Request,
-  { params }: { params: { id: string } },
+  _req: NextRequest,
+  ctx: RouteContext<"/api/messages/[id]">,
 ) {
-  const { id } = params;
+  const { id } = await ctx.params;
 
   const url = `${process.env.API_URL}/messages/${id}`;
   const res = await fetch(url);
