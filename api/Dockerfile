@@ -17,4 +17,4 @@ COPY .env .env
 EXPOSE 5000
 
 # Run bundle install, migrate db, and start server in development mode
-CMD ["sh", "-c", "bundle install && bin/rails db:migrate && bin/rails server -b 0.0.0.0 -p 5000"]
+CMD ["sh", "-c", "RAILS_ENV=production bin/rails db:migrate && RAILS_ENV=production bin/rails assets:precompile && RAILS_ENV=production bin/rails server -b 0.0.0.0 -p 5000"]

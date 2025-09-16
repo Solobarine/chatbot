@@ -4,9 +4,9 @@ export const dynamic = "force-static";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { id: string } },
+  ctx: RouteContext<"/api/conversations/[id]">,
 ) {
-  const { id } = params;
+  const { id } = await ctx.params;
 
   const url = `${process.env.API_URL}/conversations/${id}`;
   const res = await fetch(url);
@@ -16,10 +16,10 @@ export async function GET(
 }
 
 export async function DELETE(
-  _req: Request,
-  { params }: { params: { id: string } },
+  _req: NextRequest,
+  ctx: RouteContext<"/api/conversations/[id]">,
 ) {
-  const { id } = params;
+  const { id } = await ctx.params;
 
   const url = `${process.env.API_URL}/conversations/${id}`;
   const res = await fetch(url, {
