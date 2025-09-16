@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import theme from "@/theme";
 import "./globals.css";
+import { AppBar, Avatar, Box, Toolbar } from "@mui/material";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -26,7 +27,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
         <AppRouterCacheProvider options={{ key: "css" }}>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Box>
+              <AppBar position="sticky" sx={{ backgroundColor: "#fff" }}>
+                <Toolbar>
+                  <Avatar variant="square">H</Avatar>
+                </Toolbar>
+              </AppBar>
+              {children}
+            </Box>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

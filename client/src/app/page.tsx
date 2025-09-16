@@ -1,9 +1,5 @@
-import { Container, Typography } from "@mui/material";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <Container>
-      <Typography>Hello World - It's a Chatbot</Typography>
-    </Container>
-  );
+  redirect("/conversations");
 }
